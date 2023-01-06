@@ -59,7 +59,7 @@ As you need an API key when running the program, the program expects the API_KEY
 
 The docker image uses python:3.9-slim as this image does not have any (H)igh issues, as checked from Snyk.io
 
-The API_KEY used in the unitests, generally in real-world we would use a sanboxed or Test key which has very limited access and gets deleted after the testing is done. 
+The API_KEY used in the unitests, generally in real-world we would use a sanboxed or Test key which has very limited access and gets deleted after the testing is done. Another preference would be to use mock to even remove this from the unittest file.
 
 
 
