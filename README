@@ -1,1 +1,63 @@
-# MAC Address Company Name Lookup
+## MAC Address Company Name Lookup
+
+This is a python program with a docker image that can be used to query a company name for a given MAC address in the command line. 
+The lookup is done using https://macaddress.io API which requires an API KEY. 
+
+
+## Prerequistes
+
+. You need to register an account at https://macaddress.io and get an API key from the account dashboard. Signup is free and you can query 100 requests per day.
+
+## Usage
+
+## Docker image
+
+To use the Docker image, you need to have Docker installed.
+
+Then, build the docker image using the following command:
+
+> docker build -t get_mac_company .
+
+The above command will build a docker image and tag the image with name 'get_mac_company'
+
+Now, the command to run the docker image:
+
+> docker run -e API_KEY=your_api_key get_mac_company mac_address
+
+The above command will start a new docker container which is tagged with get_mac_company, and pass in the api_key and the mac_address as command line parameters to the python program and print the company name in a format that the user can understand.
+
+
+### Using the standalone Python program
+
+To use the Python program, you need to have pip installed locally
+After installing pip, go to the project working directory and type below:
+
+> pip install -r requirements.txt
+
+You can now run the program from the command line by passing a MAC address
+
+> python get_mac_company.py 00:00:00:00:00:00
+
+The above command will print Xerox Corp
+
+## Unit tests
+
+. The source code also includes unit test which uses pytest. 
+. However, if you wish to execute them mnaully from the working director of the project, please install:
+
+> pip install pytest
+
+then, run:
+
+> pytest
+
+. The above command will discover the tests and run them.
+
+
+## Security
+As you need an API key when running the program, the program expects the API_KEY from the user as an environment variable when runnign the docker container. So, please obtain your API_KEY from macaddress.io before trying to run the script or the docker container.
+
+The docker image uses python:3.9-slim as this image does not have any (H)igh issues, as checked from Snyk.io
+
+
+
